@@ -26,6 +26,9 @@ export default function TodoPage() {
     <main className="min-h-screen bg-gray-950 text-white p-6 font-sans">
       <header className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-semibold text-cyan-400">📝 Todo App</h1>
+        <Link href="/about" className="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-xl">
+           about
+        </Link>
         <Link href="/portfolio" className="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-xl">
           ← Back to Portfolio
         </Link>
