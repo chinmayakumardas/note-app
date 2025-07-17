@@ -1,8 +1,4 @@
-// next.config.mjs
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  basePath: '/note',
-  assetPrefix: '/note',
-}
+const nextConfig = {};
 
-export default nextConfig
+export default nextConfig;
