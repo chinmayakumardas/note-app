@@ -1,11 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'; // App Router hook
 
 export default function Home() {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState('');
-  const router = useRouter();
 
   useEffect(() => {
     fetchTodos();
@@ -21,9 +19,6 @@ export default function Home() {
     if (!text) return;
     const res = await fetch('/api/todos', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify({ text }),
     });
     const newTodo = await res.json();
@@ -34,9 +29,6 @@ export default function Home() {
   const toggleComplete = async (id, completed) => {
     const res = await fetch('/api/todos', {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify({ id, completed: !completed }),
     });
     const updated = await res.json();
@@ -46,9 +38,6 @@ export default function Home() {
   const deleteTodo = async (id) => {
     await fetch('/api/todos', {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify({ id }),
     });
     setTodos(todos.filter(t => t._id !== id));
@@ -58,15 +47,6 @@ export default function Home() {
     <main className="min-h-screen bg-gray-100 p-8">
       <div className="max-w-md mx-auto bg-white shadow-lg rounded p-6">
         <h1 className="text-2xl font-bold mb-4">📝 Fullstack Todo App</h1>
-
-        {/* Go to /note button */}
-        <button
-          onClick={() => router.push('/note')}
-          className="mb-4 bg-green-600 text-white px-4 py-2 rounded"
-        >
-          Go to /note
-        </button>
-
         <div className="flex mb-4">
           <input
             value={text}
@@ -81,7 +61,6 @@ export default function Home() {
             Add
           </button>
         </div>
-
         <ul>
           {todos.map((todo) => (
             <li key={todo._id} className="flex items-center justify-between py-2">

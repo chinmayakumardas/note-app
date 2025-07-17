@@ -1,4 +1,4 @@
-import connectDB from "@/lib/db";
+import {connectDB} from "@/lib/db";
 import Todo from "@/models/Todo";
 
 export async function GET() {
